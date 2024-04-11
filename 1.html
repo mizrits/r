@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>フォームに入力したURLに移動</title>
+</head>
+<body>
+  <h1>フォームに入力したURLに移動</h1>
+  <form action="javascript:void(0)">
+    <input type="text" id="url" placeholder="RC">
+    <button type="submit" onclick="submitForm()">移動</button>
+  </form>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+  function submitForm() {
+    var url = $('#url').val();
+    // URLのバリデーション処理
+    //if (!url.match(/^(https?:\/\/)?[a-zA-Z0-9_\-.]+\.[a-zA-Z]{2,7}(:[0-9]{1,5})?(\/.*)?$/)) {
+    //  alert('不正なURLです');
+    //  return;
+    //}
+    // 新しいタブでURLを開く
+    window.open("https://en.wikipedia.org/wiki/"+url+":Special:RecentChanges", '_blank');
+  }
+  </script>
+</body>
+</html>
