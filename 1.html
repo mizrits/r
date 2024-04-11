@@ -6,22 +6,43 @@
   <title>フォームに入力したURLに移動</title>
 </head>
 <body>
-  <h1>フォームに入力したURLに移動</h1>
+  <h1>Redirector</h1>
+  <h3>RC</h3>
   <form action="javascript:void(0)">
-    <input type="text" id="url" placeholder="RC">
-    <button type="submit" onclick="submitForm()">移動</button>
+    <input type="text" id="lang" placeholder="langcode,projectid ex. ja:w:">
+    <button type="submit" onclick="goRC()">移動</button>
+  </form>
+  <h3>metaCA</h3>
+  <form action="javascript:void(0)">
+    <input type="text" id="name" placeholder="username">
+    <button type="submit" onclick="goCA()">移動</button>
+  </form>
+  <h3>general</h3>
+  <form action="javascript:void(0)">
+    <input type="text" id="lang" value="ja:">
+    <input type="text" id="page" value="Special:">
+    <button type="submit" onclick="goGeneral()">移動</button>
   </form>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
-  function submitForm() {
-    var url = $('#url').val();
+  function goRC() {
+    var lang = $('#lang').val();
+    window.open("https://en.wikipedia.org/wiki/"+lang+"Special:RecentChanges?uselang=ja", '_blank');
+  }
+  function goCA() {
+    var name = $('#name').val();
+    window.open("https://meta.wikimedia.org/wiki/Special:CentralAuth/"+name+"?uselang=ja", '_blank');
+  }
+  function goGeneral() {
+    var lang = $('#lang').val();
+    var page = $('#page').val();
     // URLのバリデーション処理
     //if (!url.match(/^(https?:\/\/)?[a-zA-Z0-9_\-.]+\.[a-zA-Z]{2,7}(:[0-9]{1,5})?(\/.*)?$/)) {
     //  alert('不正なURLです');
     //  return;
     //}
     // 新しいタブでURLを開く
-    window.open("https://en.wikipedia.org/wiki/"+url+":Special:RecentChanges", '_blank');
+    window.open("https://en.wikipedia.org/wiki/"+lang+page+"?uselang=ja", '_blank');
   }
   </script>
 </body>
